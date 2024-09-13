@@ -18,45 +18,46 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
     public class User {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long userId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long userId;
 
-        private String username;
-        private String email;
-        private String passwordHash;
-        private LocalDate dateOfBirth;
-        private String country;
+    private String username;
+    private String email;
+    private String passwordHash;
+    private LocalDate dateOfBirth;
+    private String country;
 
-        @ManyToOne
-        @JoinColumn(name = "subscriptionPlanId")
-        private SubscriptionPlan subscriptionPlan;
+    @ManyToOne
+    @JoinColumn(name = "subscriptionPlanId")
+    private SubscriptionPlan subscriptionPlan;
 
-        private LocalDate joinDate;
-        private String profilePictureUrl;
+    private LocalDate joinDate;
+    private String profilePictureUrl;
 
-        @Column(columnDefinition = "TEXT")
-        private String preferences; // stored as JSON
+    @Column(columnDefinition = "TEXT")
+    private String preferences; // stored as JSON
 
-        @OneToMany(mappedBy = "user")
-        private List<Playlist> playlists;
+    @OneToMany(mappedBy = "user")
+    private List<Playlist> playlists;
 
-        @OneToMany(mappedBy = "user")
-        private List<Favorites> favorites;
+    @OneToMany(mappedBy = "user")
+    private List<Favorites> favorites;
 
-        @OneToMany(mappedBy = "user")
-        @JoinTable(
-                name = "user_artist",
-                joinColumns = @JoinColumn(name = "userId"),
-                inverseJoinColumns = @JoinColumn(name = "artistId"))
-        private List<Artist> followedArtists;
+    // If you want bidirectional, remove JoinTable here and manage the relationship in the Artist entity
+    @ManyToMany
+    @JoinTable(
+            name = "user_artist_follow",
+            joinColumns = @JoinColumn(name = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "artistId"))
+    private List<Artist> followedArtists;
 
-        @ManyToMany
-        @JoinTable(
-                name = "user_playlist_follow",
-                joinColumns = @JoinColumn(name = "userId"),
-                inverseJoinColumns = @JoinColumn(name = "playlistId"))
-        private List<Playlist> followedPlaylists;
+    @ManyToMany
+    @JoinTable(
+            name = "user_playlist_follow",
+            joinColumns = @JoinColumn(name = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "playlistId"))
+       private List<Playlist> followedPlaylists;
 
 
     }
