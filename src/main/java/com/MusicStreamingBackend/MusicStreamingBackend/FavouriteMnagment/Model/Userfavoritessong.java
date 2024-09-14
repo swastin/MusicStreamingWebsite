@@ -10,24 +10,19 @@ import java.time.Instant;
 @Getter
 @Setter
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "userfavoritessong")
+public class Userfavoritessong {
     @Id
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "favorite_id", nullable = false)
     private Integer id;
 
-    @Column(name = "username", nullable = false)
-    private String username;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    @Column(name = "email", nullable = false)
-    private String email;
-
-    @Column(name = "password", nullable = false)
-    private String password;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "subscription_plan_id")
-    private Subscriptionplan subscriptionPlan;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "song_id", nullable = false)
+    private Song song;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "created_at")

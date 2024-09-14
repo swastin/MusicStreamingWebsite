@@ -1,4 +1,4 @@
-package com.MusicStreamingBackend.MusicStreamingBackend.Genermanagment.Models;
+package com.example.musicmanagmentbackend;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,14 +13,14 @@ import java.time.Instant;
 @Getter
 @Setter
 @Entity
-@Table(name = "genres")
-public class Genre {
+@Table(name = "languages")
+public class Language {
     @Id
-    @Column(name = "genre_id", nullable = false)
+    @Column(name = "language_id", nullable = false)
     private Integer id;
 
-    @Column(name = "genre_name", nullable = false)
-    private String genreName;
+    @Column(name = "language_name", nullable = false)
+    private String languageName;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "created_at")
