@@ -1,4 +1,4 @@
-package com.example.musicmanagmentbackend;
+package com.MusicStreamingBackend.MusicStreamingBackend.CouponcodeManagment.Models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

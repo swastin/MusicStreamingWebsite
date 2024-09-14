@@ -1,63 +1,34 @@
 package com.MusicStreamingBackend.MusicStreamingBackend.songmanagment.models;
-import com.MusicStreamingBackend.MusicStreamingBackend.AlbumManagment.models.Album;
-import com.MusicStreamingBackend.MusicStreamingBackend.Genermanagment.Models.Genre;
-import com.MusicStreamingBackend.MusicStreamingBackend.ArtistManagment.Models.Artist;
-import com.MusicStreamingBackend.MusicStreamingBackend.UserManagment.Models.User;
-import com.MusicStreamingBackend.MusicStreamingBackend.playlistManagment.Models.Playlist;
-import jakarta.persistence.Entity;
+
 import jakarta.persistence.*;
-import jakarta.persistence.Table;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
-import java.time.LocalDate;
-import java.util.List;
+import java.time.Instant;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
 @Entity
-@Table(name = "Song", indexes = {
-        @Index(name = "idx_song_artistid", columnList = "artistId")
-})
+@Table(name = "songs")
 public class Song {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long songId;
+    @Column(name = "song_id", nullable = false)
+    private Integer id;
 
-    private String title;
-    private Integer duration;
+    @Column(name = "song_title", nullable = false)
+    private String songTitle;
 
-    @ManyToOne
-    @JoinColumn(name = "albumId")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "album_id")
     private Album album;
 
-    @ManyToOne
-    @JoinColumn(name = "artistId")
-    private Artist artist;
+    @ColumnDefault("CURRENT_TIMESTAMP")
+    @Column(name = "created_at")
+    private Instant createdAt;
 
-    @ManyToOne
-    @JoinColumn(name = "genreId")
-    private Genre genre;
+    @ColumnDefault("CURRENT_TIMESTAMP")
+    @Column(name = "updated_at")
+    private Instant updatedAt;
 
-    private String fileUrl;
-    private String lyrics;
-    private String language;
-    private LocalDate releaseDate;
-    private Long playCount;
-    private Long likeCount;
-
-    @ManyToMany(mappedBy = "songs")
-    private List<Playlist> playlists;
-
-    @ManyToMany(mappedBy = "favorites")
-    private List<User> usersWhoFavorited;
-
-//    @ManyToMany
-//    @JoinTable(
-//            name = "song_tag",
-//            joinColumns = @JoinColumn(name = "songId"),
-//            inverseJoinColumns = @JoinColumn(name = "tagId"))
-//    //private List<Tag> tags;
-//
-//    // Getters and setters
 }

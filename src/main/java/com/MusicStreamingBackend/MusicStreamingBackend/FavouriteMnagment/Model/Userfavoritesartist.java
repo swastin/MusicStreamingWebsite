@@ -1,4 +1,4 @@
-package com.example.musicmanagmentbackend;
+package com.MusicStreamingBackend.MusicStreamingBackend.FavouriteMnagment.Model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

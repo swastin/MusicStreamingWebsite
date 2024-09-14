@@ -1,4 +1,4 @@
-package com.example.musicmanagmentbackend;
+package com.MusicStreamingBackend.MusicStreamingBackend.UserManagment.Models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

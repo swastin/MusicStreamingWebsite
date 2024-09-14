@@ -1,4 +1,4 @@
-package com.MusicStreamingBackend.MusicStreamingBackend.FavouriteMnagment.Model;
+package com.MusicStreamingBackend.MusicStreamingBackend.FavouriteMnagment.Repository;
 
 import org.springframework.data.repository.CrudRepository;
 
