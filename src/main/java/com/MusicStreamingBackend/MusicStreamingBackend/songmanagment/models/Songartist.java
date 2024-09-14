@@ -1,6 +1,8 @@
 package com.MusicStreamingBackend.MusicStreamingBackend.songmanagment.models;
 
+import com.MusicStreamingBackend.MusicStreamingBackend.ArtistManagment.Models.Artist;
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
@@ -9,8 +11,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.Instant;
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "songartists")
 public class Songartist {

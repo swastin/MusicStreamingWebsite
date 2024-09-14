@@ -1,6 +1,7 @@
 package com.MusicStreamingBackend.MusicStreamingBackend.playlistManagment.Repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.MusicStreamingBackend.MusicStreamingBackend.playlistManagment.Models.Playlist;
+import org.springframework.data.repository.CrudRepository;
 
-public interface PlaylistRepository extends JpaRepository<Playlist, Long> {
+public interface PlaylistRepository extends CrudRepository<Playlist, Integer> {
 }
