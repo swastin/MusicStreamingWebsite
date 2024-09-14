@@ -2,15 +2,16 @@ package com.MusicStreamingBackend.MusicStreamingBackend.UserManagment.Models;
 
 import com.MusicStreamingBackend.MusicStreamingBackend.SubscriptionPlanManagment.models.Subscriptionplan;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
+
 @Table(name = "users")
 public class User {
     @Id
