@@ -1,5 +1,6 @@
 package com.MusicStreamingBackend.MusicStreamingBackend.ArtistManagment.Models;
 
+import com.MusicStreamingBackend.MusicStreamingBackend.Genermanagment.Models.Genre;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +9,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -29,12 +31,17 @@ public class Artistgenre {
     @JoinColumn(name = "genre_id", nullable = false)
     private Genre genre;
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "created_at")
-    private Instant createdAt;
+//    @ColumnDefault("CURRENT_TIMESTAMP")
+//    @Column(name = "created_at")
+//    private Instant createdAt;
+//
+//    @ColumnDefault("CURRENT_TIMESTAMP")
+//    @Column(name = "updated_at")
+//    private Instant updatedAt;
+@Column(name = "CreatedAt", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+private LocalDateTime createdAt;
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "updated_at")
-    private Instant updatedAt;
+    @Column(name = "UpdateAt", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    private LocalDateTime updatedAt;
 
 }

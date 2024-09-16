@@ -1,11 +1,14 @@
 package com.MusicStreamingBackend.MusicStreamingBackend.FollowerManagment.Model;
 
+import com.MusicStreamingBackend.MusicStreamingBackend.Genermanagment.Models.Genre;
+import com.MusicStreamingBackend.MusicStreamingBackend.UserManagment.Models.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -24,12 +27,10 @@ public class Userfollowsgenre {
     @JoinColumn(name = "genre_id", nullable = false)
     private Genre genre;
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "created_at")
-    private Instant createdAt;
+    @Column(name = "CreatedAt", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime createdAt;
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "updated_at")
-    private Instant updatedAt;
+    @Column(name = "UpdateAt", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    private LocalDateTime updatedAt;
 
 }
