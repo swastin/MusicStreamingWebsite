@@ -1,7 +1,8 @@
 package com.MusicStreamingBackend.MusicStreamingBackend.AlbumManagment.models;
 
 import com.MusicStreamingBackend.MusicStreamingBackend.ArtistManagment.Models.Artist;
-import com.MusicStreamingBackend.MusicStreamingBackend.Genermanagment.Models.Genre;
+import com.MusicStreamingBackend.MusicStreamingBackend.Genermanagment.Models.Gener;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,7 +29,7 @@ public class Album {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "genre_id", nullable = false)
-    private Genre genre;
+    private Gener genre;
 
 //    @ColumnDefault("CURRENT_TIMESTAMP")
 //    @Column(name = "created_at")

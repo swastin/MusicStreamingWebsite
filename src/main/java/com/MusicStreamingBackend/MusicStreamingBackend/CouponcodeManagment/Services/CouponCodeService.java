@@ -45,7 +45,8 @@ public class CouponCodeService {
 
     public List<CouponcodeDto> getAllCouponCodes() {
         log.info("getAllCouponCodes");
-        List<CouponcodeDto> AllCouponCodes = Optional.ofNullable(couponcodeRepository.findAll()).filter(codes -> !codes.isEmpty())
+        List<CouponcodeDto> AllCouponCodes = Optional.ofNullable(couponcodeRepository.findAll())
+                .filter(codes -> !codes.isEmpty())
                 .map(codes -> codes
                         .stream()
                         .map(this::entityToDto)

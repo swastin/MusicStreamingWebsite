@@ -1,13 +1,11 @@
 package com.MusicStreamingBackend.MusicStreamingBackend.FavouriteMnagment.Model;
 
-import com.MusicStreamingBackend.MusicStreamingBackend.Genermanagment.Models.Genre;
+import com.MusicStreamingBackend.MusicStreamingBackend.Genermanagment.Models.Gener;
 import com.MusicStreamingBackend.MusicStreamingBackend.UserManagment.Models.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Getter
@@ -24,8 +22,8 @@ public class Userfavoritesgenre {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "genre_id", nullable = false)
-    private Genre genre;
+    @JoinColumn(name = "gener_id", nullable = false)
+    private Gener gener;
 
     @Column(name = "CreatedAt", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;

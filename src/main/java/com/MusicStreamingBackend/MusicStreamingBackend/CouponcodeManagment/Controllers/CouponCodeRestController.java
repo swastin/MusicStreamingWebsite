@@ -36,7 +36,7 @@ public class CouponCodeRestController {
 
     @PutMapping("/{code}")
     public ResponseEntity<CouponcodeDto> updateCouponCode(@PathVariable String code, @RequestBody CouponcodeDto couponcodeDto) {
-        couponcodeDto.setCode(code);  // Ensure the code matches the URL path
+       // couponcodeDto.setCode(code);  // Ensure the code matches the URL path
         CouponcodeDto updatedCouponCode = couponCodeService.updateCouponCode(couponcodeDto);
         return ResponseEntity.ok(updatedCouponCode);
     }

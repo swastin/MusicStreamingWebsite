@@ -31,7 +31,7 @@ public class Artistprofile {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "genre_id")
-    private Genre genre;
+    private Gener gener;
 
     @Column(name = "location")
     private String location;
