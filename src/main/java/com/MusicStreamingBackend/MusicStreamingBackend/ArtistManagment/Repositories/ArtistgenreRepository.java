@@ -1,8 +1,9 @@
 package com.MusicStreamingBackend.MusicStreamingBackend.ArtistManagment.Repositories;
 
-import com.MusicStreamingBackend.MusicStreamingBackend.ArtistManagment.Models.Artistgenre;
-import com.MusicStreamingBackend.MusicStreamingBackend.ArtistManagment.Models.ArtistgenreId;
+import com.MusicStreamingBackend.MusicStreamingBackend.ArtistManagment.Models.Artistgener;
+import com.MusicStreamingBackend.MusicStreamingBackend.ArtistManagment.Models.ArtistgenerId;
+
 import org.springframework.data.repository.CrudRepository;
 
-public interface ArtistgenreRepository extends CrudRepository<Artistgenre, ArtistgenreId> {
+public interface ArtistgenreRepository extends CrudRepository<Artistgener, ArtistgenerId> {
 }

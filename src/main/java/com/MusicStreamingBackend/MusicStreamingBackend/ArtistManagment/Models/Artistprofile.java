@@ -1,6 +1,7 @@
 package com.MusicStreamingBackend.MusicStreamingBackend.ArtistManagment.Models;
 
-import com.MusicStreamingBackend.MusicStreamingBackend.Genermanagment.Models.Genre;
+import com.MusicStreamingBackend.MusicStreamingBackend.Genermanagment.Models.Gener;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

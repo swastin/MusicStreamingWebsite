@@ -1,7 +1,7 @@
 package com.MusicStreamingBackend.MusicStreamingBackend.ArtistManagment.Models;
 
 import com.MusicStreamingBackend.MusicStreamingBackend.Genermanagment.Models.Gener;
-import com.MusicStreamingBackend.MusicStreamingBackend.Genermanagment.Models.Genre;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,7 +26,7 @@ public class Artistgener {
     @JoinColumn(name = "artist_id", nullable = false)
     private Artist artist;
 
-    @MapsId("genreId")
+    @MapsId("generId")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "genre_id", nullable = false)

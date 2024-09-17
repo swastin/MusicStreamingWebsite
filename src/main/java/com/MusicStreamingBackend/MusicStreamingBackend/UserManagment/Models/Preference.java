@@ -1,6 +1,6 @@
 package com.MusicStreamingBackend.MusicStreamingBackend.UserManagment.Models;
 
-import com.MusicStreamingBackend.MusicStreamingBackend.Genermanagment.Models.Genre;
+import com.MusicStreamingBackend.MusicStreamingBackend.Genermanagment.Models.Gener;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,8 +23,8 @@ public class Preference {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "genre_id", nullable = false)
-    private Genre genre;
+    @JoinColumn(name = "gener_id", nullable = false)
+    private Gener genre;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "language_id", nullable = false)
