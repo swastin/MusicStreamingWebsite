@@ -61,7 +61,7 @@ public class GenerService {
 
 	}
 
-	public List<GenerDto> getAllGenre(String name) {
+	public List<GenerDto> getAllGenre() {
 		log.info("Fetching  All gener with name");
 		List<GenerDto> allgener = Optional.ofNullable(genreRepository.findAll())
 				.filter(names -> !names.isEmpty())
@@ -103,11 +103,9 @@ public class GenerService {
 		}
 	}
 	public GenerDto updateGener(GenerDto generDto) throws GenernotUpdatedException {
-		Gener existingGener = genreRepository.findByGenerName(generDto.getGenerName()).orElseThrow(()->new GenernotfoundException("Gener is not found"));	
+		Gener existingGener = genreRepository.findByGenerName(generDto.getGenerName()).orElseThrow(()->new GenernotfoundException("Gener is not found"));
 		existingGener.setGenerName(generDto.getGenerName());
 		existingGener.setId(generDto.getId());
-		existingGener.setCreatedAt(generDto.getCreatedAt());
-		existingGener.setUpdatedAt(generDto.getUpdatedAt());
 		Gener updatedGener = genreRepository.save(existingGener);
 		
 		log.info("Gener is updated successfully with id:{} at {}",updatedGener.getId(),updatedGener.getUpdatedAt());
@@ -116,7 +114,7 @@ public class GenerService {
 	}
 	public void deleteGener(GenerDto generDto) {
 		try {
-			Gener existingGener = genreRepository.findByGenerName(generDto.getGenerName()).orElseThrow(()->new GenernotfoundException("Gener is not found"));	
+			Gener existingGener = genreRepository.findByGenerName(generDto.getGenerName()).orElseThrow(()->new GenernotfoundException("Gener is not found"));
 			genreRepository.delete(existingGener);
 			 log.info("Deleted Gener name: {}", generDto.getGenerName());
 		}
@@ -126,4 +124,5 @@ public class GenerService {
 	}	
 		
 	}
+
 }

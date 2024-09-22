@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @Table(name = "playlists")
 public class Playlist {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "playlist_id", nullable = false)
     private Integer id;
 

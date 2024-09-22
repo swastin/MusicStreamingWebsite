@@ -16,28 +16,27 @@ public class CouponCodeRestController {
     private CouponCodeService couponCodeService;
 
     @GetMapping
-    public ResponseEntity<List<CouponcodeDto>> getAllcouponcode() {
+    public ResponseEntity<List<CouponcodeDto>> getAllCoupons() {
         List<CouponcodeDto> allCouponCodes = couponCodeService.getAllCouponCodes();
         return ResponseEntity.ok(allCouponCodes);
     }
 
     @GetMapping("/{code}")
-    public ResponseEntity<CouponcodeDto> getcouponcode(@PathVariable String code) {
+    public ResponseEntity<CouponcodeDto> getCouponCode(@PathVariable String code) {
         CouponcodeDto couponCode = couponCodeService.getCouponCode(code);
         return ResponseEntity.ok(couponCode);
     }
 
     @PostMapping
-    public ResponseEntity<CouponcodeDto> savecouponcode(@RequestBody CouponcodeDto couponcodedto) {
-        CouponcodeDto couponcodeDto = couponCodeService.saveCouponCode(couponcodedto);
-        return new ResponseEntity<>(couponcodeDto, HttpStatus.CREATED);
-
+    public ResponseEntity<CouponcodeDto> saveCouponCode(@RequestBody CouponcodeDto couponCodeDto) {
+        CouponcodeDto savedCouponCode = couponCodeService.saveCouponCode(couponCodeDto);
+        return new ResponseEntity<>(savedCouponCode, HttpStatus.CREATED);
     }
 
     @PutMapping("/{code}")
-    public ResponseEntity<CouponcodeDto> updateCouponCode(@PathVariable String code, @RequestBody CouponcodeDto couponcodeDto) {
-       // couponcodeDto.setCode(code);  // Ensure the code matches the URL path
-        CouponcodeDto updatedCouponCode = couponCodeService.updateCouponCode(couponcodeDto);
+    public ResponseEntity<CouponcodeDto> updateCouponCode(@PathVariable String code, @RequestBody CouponcodeDto couponCodeDto) {
+        couponCodeDto.setCode(code);
+        CouponcodeDto updatedCouponCode = couponCodeService.updateCouponCode(couponCodeDto);
         return ResponseEntity.ok(updatedCouponCode);
     }
 
@@ -49,5 +48,6 @@ public class CouponCodeRestController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
+
 
 

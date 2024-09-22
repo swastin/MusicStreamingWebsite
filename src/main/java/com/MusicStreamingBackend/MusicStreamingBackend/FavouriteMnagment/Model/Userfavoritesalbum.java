@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -16,6 +18,7 @@ import java.time.LocalDateTime;
 @Table(name = "userfavoritesalbum")
 public class Userfavoritesalbum {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "favorite_id", nullable = false)
     private Integer id;
 
@@ -34,9 +37,10 @@ public class Userfavoritesalbum {
 //    @ColumnDefault("CURRENT_TIMESTAMP")
 //    @Column(name = "updated_at")
 //    private Instant updatedAt;
-@Column(name = "CreatedAt", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @CreationTimestamp
+    @Column(name = "CreatedAt", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 private LocalDateTime createdAt;
-
+    @UpdateTimestamp
     @Column(name = "UpdateAt", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 

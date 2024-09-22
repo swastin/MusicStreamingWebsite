@@ -1,7 +1,6 @@
 package com.MusicStreamingBackend.MusicStreamingBackend.FollowerManagment.Model;
 
-import com.MusicStreamingBackend.MusicStreamingBackend.Genermanagment.Models.Gener;
-
+import com.MusicStreamingBackend.MusicStreamingBackend.AlbumManagment.models.Album;
 import com.MusicStreamingBackend.MusicStreamingBackend.UserManagment.Models.User;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -16,11 +15,11 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "userfollowsgenre")
-public class Userfollowsgener {
+@Table(name = "userfollowsalbum")
+public class Userfollowsalbum {
     @Id
-    @Column(name = "follow_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "follow_id", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -28,13 +27,14 @@ public class Userfollowsgener {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "gener_id", nullable = false)
-    private Gener genre;
+    @JoinColumn(name = "album_id", nullable = false)
+    private Album album;
     @CreationTimestamp
     @Column(name = "CreatedAt", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
     @UpdateTimestamp
     @Column(name = "UpdateAt", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
+
 
 }

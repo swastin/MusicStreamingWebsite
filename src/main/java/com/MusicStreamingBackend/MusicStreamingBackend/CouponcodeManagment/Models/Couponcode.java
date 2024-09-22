@@ -1,17 +1,17 @@
 package com.MusicStreamingBackend.MusicStreamingBackend.CouponcodeManagment.Models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
-
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.persistence.*;
+import lombok.*;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,6 +20,7 @@ import java.time.LocalDateTime;
 public class Couponcode {
     @Id
     @Column(name = "coupon_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "code", nullable = false, length = 50)
@@ -30,19 +31,41 @@ public class Couponcode {
 
     @Column(name = "expiry_date", nullable = false)
     private LocalDate expiryDate;
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt = LocalDateTime.now();
 
-//    @ColumnDefault("CURRENT_TIMESTAMP")
-//    @Column(name = "created_at")
-//    private Instant createdAt;
-//
-//    @ColumnDefault("CURRENT_TIMESTAMP")
-//    @Column(name = "updated_at")
-//    private Instant updatedAt;
-@Column(name = "CreatedAt", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-private LocalDateTime createdAt;
-
-    @Column(name = "UpdateAt", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @UpdateTimestamp
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
+    @PrePersist
+    public void beforeSave() {
+        log.info("Attempting to add coupon code with code {}", code);
+    }
 
+    @PostPersist
+    public void afterSave() {
+        log.info("Coupon code {} with ID {} added successfully at {}", code, id, createdAt);
+    }
+
+    @PostUpdate
+    public void afterUpdate() {
+        log.info("Coupon code {} with ID {} updated successfully at {}", code, id, updatedAt);
+    }
+
+    @PreUpdate
+    public void beforeUpdate() {
+        log.info("Attempting to update coupon code with code {}", code);
+    }
+
+    @PreRemove
+    public void beforeDelete() {
+        log.info("Attempting to delete coupon code with code {}", code);
+    }
+
+    @PostRemove
+    public void afterDelete() {
+        log.info("Coupon code {} with ID {} deleted successfully at {}", code, id, updatedAt);
+    }
 }

@@ -44,20 +44,21 @@ public class CouponCodeService {
     }
 
     public List<CouponcodeDto> getAllCouponCodes() {
-        log.info("getAllCouponCodes");
-        List<CouponcodeDto> AllCouponCodes = Optional.ofNullable(couponcodeRepository.findAll())
-                .filter(codes -> !codes.isEmpty())
-                .map(codes -> codes
-                        .stream()
-                        .map(this::entityToDto)
-                        .collect(Collectors.toList()))
-                .orElseThrow(() -> {
-                    log.error("Error occured ,coupon code not found !!");
-                    return new CouponCodeNotFound("Couponcode not found");
-                });
-        log.info("total coupon code found{}", AllCouponCodes.size());
-        return AllCouponCodes;
+       
+        List<Couponcode> couponCodes =couponcodeRepository.findAll();
+
+     
+        if (couponCodes.isEmpty()) {
+            log.error("Error occurred, coupon codes not found!");
+            throw new CouponCodeNotFound("Coupon codes not found");
+        }
+
+        // Convert List<Couponcode> to List<CouponcodeDto>
+        return couponCodes.stream()
+                          .map(this::entityToDto) // Assuming entityToDto converts Couponcode to CouponcodeDto
+                          .collect(Collectors.toList());
     }
+
 
     public CouponcodeDto getCouponCode(String code) {
         log.info("Fetching coupon code with code: {}", code);
