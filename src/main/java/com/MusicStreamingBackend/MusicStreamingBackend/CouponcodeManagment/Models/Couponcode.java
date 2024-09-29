@@ -19,8 +19,8 @@ import lombok.extern.slf4j.Slf4j;
 @Table(name = "couponcodes")
 public class Couponcode {
     @Id
-    @Column(name = "coupon_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "coupon_id", nullable = false)
     private Integer id;
 
     @Column(name = "code", nullable = false, length = 50)

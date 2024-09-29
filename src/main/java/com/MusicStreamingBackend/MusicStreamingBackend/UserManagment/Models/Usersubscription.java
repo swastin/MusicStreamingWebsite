@@ -1,12 +1,10 @@
 package com.MusicStreamingBackend.MusicStreamingBackend.UserManagment.Models;
 
-import com.MusicStreamingBackend.MusicStreamingBackend.SubscriptionPlanManagment.models.Subscriptionplan;
+import com.MusicStreamingBackend.MusicStreamingBackend.SubscriptionPlanManagment.Models.Subscriptionplan;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
